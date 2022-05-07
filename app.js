@@ -42,12 +42,32 @@ app.get('/artistsearch', (req, res) => {
   spotifyApi
   .searchArtists(search)
     .then(data =>
-     {console.log(data.body.artists.items)
+     {
      res.render("artist-search-results", {artistsearch: data.body.artists.items})
      })
      .catch(error => console.log(error))
 });
 
+app.get('/albums/:id', (req, res) => {
+  const {id} = req.params;
 
+  spotifyApi
+  .getArtistAlbums(id)
+  .then(data =>
+    {//res.json(data.body.items)
+    res.render("album", {artistsearch: data.body.items})
+  })
+  .catch(error => console.log(error))
+});
+
+app.get('/viewtracks/:id', (req, res) => {
+  const {id} = req.params;
+
+  spotifyApi
+  .getAlbumTracks(id)
+  .then(data =>
+    {console.log(data.body.items)
+    })
+})
 
 app.listen(3000, () => console.log('My Spotify project running on port 3000 🎧 🥁 🎸 🔊'));

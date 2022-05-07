@@ -1,7 +1,6 @@
-<img src={{image_url}} width="80" height="200">
-          <p> {{name}} </p>
-          <p>{{album}} </p> 
-        
+{{#each artistsearch}}
+    <h1>{{name}}</h1>
+     <img src="{{this.images.[1].url}}" class="card-img-top" alt="..." width="200" height="200">
+      <button type="submit" class="btn btn-danger"> <a href="/viewtracks/{{id}} "> View Tracks </a></button>
 
-        
-       
+{{/each}}
